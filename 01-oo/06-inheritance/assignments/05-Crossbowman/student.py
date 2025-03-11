@@ -1,26 +1,29 @@
 class Human:
     def __init__(self, name):
-        self.__name = name
+        self._name = name  # Eén underscore om name mangling te voorkomen
 
     def get_name(self):
-        return self.__name
+        return self._name
 
 
 class Archer(Human):
     def __init__(self, name, num_arrows):
         super().__init__(name)
-        self.__num_arrows = num_arrows
+        self._num_arrows = num_arrows  # Eén underscore
 
     def get_num_arrows(self):
-        return self.__num_arrows
+        return self._num_arrows
 
     def use_arrows(self, num):
-        pass
+        if num > self._num_arrows:
+            raise ValueError("Not enough arrows")
+        self._num_arrows -= num
 
 
-class Crossbowman(Archer):
+class Crossbowman(Archer, Human):
     def __init__(self, name, num_arrows):
-        pass
+        super().__init__(name, num_arrows)
 
     def triple_shot(self, target):
-        pass
+        self.use_arrows(3)  # Gebruik de bestaande methode
+        return f"{target} was shot by 3 crossbow bolts"
