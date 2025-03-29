@@ -5,7 +5,7 @@ Robin Andrews - https://compucademy.net/
 
 import turtle
 
-SPEED = 5
+SPEED = 10
 BG_COLOR = "blue"
 PEN_COLOR = "lightgreen"
 SCREEN_WIDTH = 800
